@@ -1,3 +1,7 @@
+import SimpleLightbox from "simplelightbox";
+// Додатковий імпорт стилів
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 const images = [
   {
     preview:
@@ -64,31 +68,36 @@ const images = [
   },
 ];
 
+console.log("5");
+
 const gallery = document.querySelector(".gallery")
 
-gallery.addEventListener("click", (event) => {
-    event.preventDefault()
-    if (event.target.nodeName !== "IMG") {
-        return
-    }
-    console.log(event.target.dataset.source)
+// gallery.addEventListener("click", (event) => {
+//     event.preventDefault()
+//     if (event.target.nodeName !== "IMG") {
+//         return
+//     }
+//     console.log(event.target.dataset.source)
 
-    const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" width="800" height="600">
-`)
+//     const instance = basicLightbox.create(`
+//     <img src="${event.target.dataset.source}" width="800" height="600">
+// `)
 
-instance.show()
+// instance.show()
 
-})
+// })
+
+
+
 
 function drawGallery(images) {
      const items = images.map(({ preview, description, original }) => 
         `<li class="gallery-item">
-	<a class="gallery-link" href="large-image.jpg">
+	        <a class="gallery-link" href="${original}">
 		<img 
 		  class="gallery-image" 
-		  src="small-image.jpg" 
-		  alt="Image description" 
+		  src="${preview}" 
+		  alt="${description}" 
 		/>
 	</a>
 </li>`
@@ -96,3 +105,8 @@ function drawGallery(images) {
     gallery.insertAdjacentHTML("beforeend", items)
 }
 drawGallery(images);
+
+let lightbox = new SimpleLightbox('.gallery a',{
+    captionsData: 'alt',
+    captionDelay: 250,
+});
