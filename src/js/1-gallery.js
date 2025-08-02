@@ -1,5 +1,4 @@
 import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const images = [
@@ -71,23 +70,6 @@ const images = [
 console.log("5");
 
 const gallery = document.querySelector(".gallery")
-
-// gallery.addEventListener("click", (event) => {
-//     event.preventDefault()
-//     if (event.target.nodeName !== "IMG") {
-//         return
-//     }
-//     console.log(event.target.dataset.source)
-
-//     const instance = basicLightbox.create(`
-//     <img src="${event.target.dataset.source}" width="800" height="600">
-// `)
-
-// instance.show()
-
-// })
-
-
 
 
 function drawGallery(images) {
